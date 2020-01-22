@@ -2,19 +2,30 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.template.loader import get_template
 
+from blog.models import BlogPost
+from .forms import ContactForm
 
 def home_page(request):
   my_title = "Hello there..."
+  qs = BlogPost.objects.all()[:5]
   # doc = "<h1>{title}</h1>".format(title=title)
   # django_rendered_doc = "<h1>{{title}}</h1>".format(title=title)
-  context =  {"title": my_title, "my_list": [1,2,3,4,5]}
+  context =  {"title": "Welcom to Try Django", "blog_list": qs}
   return render(request, "home.html", context)
 
 def about_page(request):
   return render(request, "about.html", {"title": "About us"})
 
 def contact_page(request):
-  return render(request, "hello_world.html", {"title": "Contact us"})
+  form = ContactForm(request.POST or None)
+  if form.is_valid():
+    print(form.cleaned_data)
+    form = ContactForm()
+  context = {
+    "title": "Contact us",
+    "form": form
+  }
+  return render(request, "form.html", context)
 
 
 def example_page(request):
