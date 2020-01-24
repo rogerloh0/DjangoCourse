@@ -30,7 +30,6 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = []
 
-LOGIN_URL = '/login'
 
 # Application definition
 
@@ -42,7 +41,7 @@ INSTALLED_APPS = [ #components
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'blog', #pluggable
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -123,6 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+<<<<<<< HEAD:src/try_django/settings.py
 
 LOCAL_STATIC_CDN_PATH = os.path.join(os.path.dirname(BASE_DIR), 'static_cdn_test')
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -136,3 +136,5 @@ MEDIA_ROOT = os.path.join(LOCAL_STATIC_CDN_PATH, 'media')
 MEDIA_URL = '/media/'
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+=======
+>>>>>>> parent of ee32b8b... TryDjango:tryDjango2/src/try_django/settings.py
