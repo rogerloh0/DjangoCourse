@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import dj_database_url       # Place this line preferably at the top
+from decouple import config  # Place this line preferably at the top
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,10 +22,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '&no-!k9xgde9k=piux$&#rc^$8@fq(@(2uky*!mmq(^&jlq^^l'
+SECRET_KEY = config('&no-!k9xgde9k=piux$&#rc^$8@fq(@(2uky*!mmq(^&jlq^^l')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
+
 
 ALLOWED_HOSTS = []
 
@@ -77,10 +80,9 @@ WSGI_APPLICATION = 'try_django.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
 }
 
 
@@ -123,11 +125,14 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOCAL_STATIC_CDN_PATH = os.path.join(os.path.dirname(BASE_DIR), 'static_cdn_test')
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-STATIC_ROOT = os.path.join(LOCAL_STATIC_CDN_PATH, 'static')#live cdn ASW S3
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')#live cdn ASW S3
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'staticfiles')
 ]
 
 MEDIA_ROOT = os.path.join(LOCAL_STATIC_CDN_PATH, 'media')
 MEDIA_URL = '/media/'
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
