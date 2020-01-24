@@ -7,11 +7,14 @@ verify_ssl = true
 
 [packages]
 django = "==2.2"
+<<<<<<< HEAD:Pipfile
 pillow = "*"
 python-decouple = "*"
 whitenoise = "*"
 dj-database-url = "*"
 gunicorn = "*"
+=======
+>>>>>>> parent of ee32b8b... TryDjango:tryDjango2/Pipfile
 
 [requires]
 python_version = "3.7"

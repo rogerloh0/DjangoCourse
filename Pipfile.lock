@@ -1,7 +1,11 @@
 {
     "_meta": {
         "hash": {
+<<<<<<< HEAD:Pipfile.lock
             "sha256": "00e7e53e1b1db7b48388332be788549326ff259d9fb9d36c201a50345aabcba3"
+=======
+            "sha256": "9554e95837bc01c744425a3f71dc3f1a66da0e6818472ea90ccfcfc751f002eb"
+>>>>>>> parent of ee32b8b... TryDjango:tryDjango2/Pipfile.lock
         },
         "pipfile-spec": 6,
         "requires": {
@@ -32,6 +36,7 @@
             "index": "pypi",
             "version": "==2.2"
         },
+<<<<<<< HEAD:Pipfile.lock
         "gunicorn": {
             "hashes": [
                 "sha256:1904bb2b8a43658807108d59c3f3d56c2b6121a701161de0ddf9ad140073c626",
@@ -75,6 +80,8 @@
             "index": "pypi",
             "version": "==3.3"
         },
+=======
+>>>>>>> parent of ee32b8b... TryDjango:tryDjango2/Pipfile.lock
         "pytz": {
             "hashes": [
                 "sha256:1c557d7d0e871de1f5ccd5833f60fb2550652da6be2693c1e02300743d21500d",
